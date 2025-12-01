@@ -203,6 +203,15 @@ let newOrder = new OrderModel({
 newOrder.save();
 res.send("order saved");
 });
+app.get("/getOrders", async (req, res) => {
+  try {
+    const allOrders = await OrderModel.find({});
+    res.json(allOrders);
+  } catch (err) {
+    res.status(500).send(err.message);
+  }
+});
+
 app.listen(port,()=>{
 console.log("app started");
 });
