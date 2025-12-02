@@ -16,7 +16,9 @@ const Menu = () => {
 
   const menuClass = "menu";
   const activeMenuClass = "menu selected";
-
+// Read username from localStorage
+  const params = new URLSearchParams(window.location.search);
+const username = params.get('username');
   return (
     <div className="menu-container">
       <img src="logo.png" style={{ width: "50px" }} />
@@ -92,7 +94,7 @@ const Menu = () => {
         <hr />
         <div className="profile" onClick={handleProfileClick}>
           <div className="avatar">ZU</div>
-          <p className="username">USERID</p>
+          <p className="username">{username}</p>
         </div>
       </div>
     </div>

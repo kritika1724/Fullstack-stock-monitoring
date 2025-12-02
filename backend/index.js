@@ -11,6 +11,8 @@ app.use(bodyParser.json());
 const {HoldingsModel} = require("./models/HoldingsModels");
 const {PositionsModel} = require("./models/PositionsModels");
 const {OrderModel} = require("./models/OrdersModels");
+const authRoutes = require('./routes/auth');
+app.use('/api/auth', authRoutes);
 mongoose.connect(uri)
   .then(() => {
     console.log("✅ DB connected");

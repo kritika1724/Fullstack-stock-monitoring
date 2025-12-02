@@ -33,6 +33,11 @@ function Navbar() {
                   </Link>
                 </li>
                 <li className="nav-item mx-3">
+                  <Link class="nav-link active" to={"/Login"}>
+                    Login
+                  </Link>
+                </li>
+                <li className="nav-item mx-3">
                   <Link class="nav-link active" to={"/about"}>
                     About
                   </Link>
