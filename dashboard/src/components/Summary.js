@@ -1,10 +1,30 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 const Summary = () => {
+  const [username, setUsername] = useState("Guest");
+
+  useEffect(() => {
+    // 1️⃣ Try to get username from query params
+    const params = new URLSearchParams(window.location.search);
+    const paramUsername = params.get("username");
+
+    if (paramUsername) {
+      setUsername(paramUsername);
+      // Save to localStorage for persistence
+      localStorage.setItem("username", paramUsername);
+    } else {
+      // 2️⃣ Fallback: get from localStorage
+      const storedUsername = localStorage.getItem("username");
+      if (storedUsername) {
+        setUsername(storedUsername);
+      }
+    }
+  }, []);
+
   return (
     <>
       <div className="username">
-        <h6>Hi, User!</h6>
+        <h6>Hi, {username}</h6>
         <hr className="divider" />
       </div>
 
@@ -22,10 +42,10 @@ const Summary = () => {
 
           <div className="second">
             <p>
-              Margins used <span>0</span>{" "}
+              Margins used <span>0</span>
             </p>
             <p>
-              Opening balance <span>3.74k</span>{" "}
+              Opening balance <span>3.74k</span>
             </p>
           </div>
         </div>
@@ -40,7 +60,7 @@ const Summary = () => {
         <div className="data">
           <div className="first">
             <h3 className="profit">
-              1.55k <small>+5.20%</small>{" "}
+              1.55k <small>+5.20%</small>
             </h3>
             <p>P&L</p>
           </div>
@@ -48,10 +68,10 @@ const Summary = () => {
 
           <div className="second">
             <p>
-              Current Value <span>31.43k</span>{" "}
+              Current Value <span>31.43k</span>
             </p>
             <p>
-              Investment <span>29.88k</span>{" "}
+              Investment <span>29.88k</span>
             </p>
           </div>
         </div>

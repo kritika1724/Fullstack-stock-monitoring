@@ -15,7 +15,7 @@ export default function Login() {
       if (res.data.username) {
         localStorage.setItem('token', res.data.token);
         localStorage.setItem('username1', res.data.username);
-        window.location.href = `http://localhost:3003?username=${res.data.username}`;
+        window.location.href = `http://localhost:3001?username=${res.data.username}`;
       }
     } catch (err) {
       if (err.response?.data?.message) {
